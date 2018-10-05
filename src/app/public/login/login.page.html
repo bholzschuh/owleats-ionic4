@@ -6,7 +6,7 @@
 
 <ion-content padding>
 
-  <form class="form" [formGroup]="loginForm">
+  <form class="form" [formGroup]="loginForm" (keyup.enter)="login(user)">
 
     <div class='validation-error'>{{message}}</div>
 
@@ -23,7 +23,8 @@
       </ion-item>
     </ion-list>
 
-    <ion-button expand="block" shape="round" [disabled]="loginForm.invalid" (click)="login(user)">Login</ion-button>
+    <ion-button expand="block" shape="round" [disabled]="loginForm.invalid" (click)="login(user)">Login
+    </ion-button>
     <ion-button expand="block" shape="round" color="danger" href="/register" routerDirection="forward">Register</ion-button>
   </form>
 

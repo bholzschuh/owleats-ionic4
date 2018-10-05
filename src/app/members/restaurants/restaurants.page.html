@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="members/dashboard"></ion-back-button>
+    </ion-buttons>
+    <ion-title>restaurants</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <div *ngFor="let vendor of vendors | async">
+    <ion-card (click)=getMenu(vendor.rid)>
+      <ion-card-header>
+        <ion-card-subtitle>{{vendor.rid}}</ion-card-subtitle>
+        <ion-card-title>{{vendor.name}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>Image Here</ion-card-content>
+    </ion-card>
+  </div>
+
+</ion-content>

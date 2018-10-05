@@ -30,7 +30,6 @@ export class ProfilePage implements OnInit {
     this.userDoc.valueChanges().subscribe(res => {
       this.first = res.first;
       this.last = res.last;
-      return;
     })
   }
 

@@ -25,14 +25,15 @@ export class FirestoreService {
     this.uid = authservice.getUID();
   }
 
+  /*
   getTable() {
     return this.users;
   }
 
-  async getUserInfo() {
+  getUserInfo() {
     console.log('users/' + this.uid);
     this.userDoc = this.db.doc('users/' + this.uid);
     this.user = this.userDoc.valueChanges();
     return this.user;
-  }
+  }*/
 }
