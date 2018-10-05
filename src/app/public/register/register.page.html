@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/login"></ion-back-button>
+    </ion-buttons>
+    <ion-title>register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <form class="form" [formGroup]="registerForm">
+
+    <div class='validation-error'>{{message}}</div>
+
+    <ion-list>
+
+      <ion-item>
+        <ion-label position="floating">First Name</ion-label>
+        <ion-input type="text" formControlName="first" [(ngModel)]="user.first"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Last Name</ion-label>
+        <ion-input type="text" formControlName="last" [(ngModel)]="user.last"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="text" formControlName="email" [(ngModel)]="user.email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Password</ion-label>
+        <ion-input type="password" formControlName="password" [(ngModel)]="user.password"></ion-input>
+      </ion-item>
+
+      <ion-item *ngIf="registerForm.invalid">
+        <p class="pass-text">Password must be at least eight characters including a
+          number an uppercase letter and a lowercase letter.</p>
+      </ion-item>
+
+      <div *ngIf="registerForm.valid">
+        <ion-button class="register-button" expand="block" shape="round" color="danger" [disabled]="registerForm.invalid"
+          (click)="register(user)">Register</ion-button>
+      </div>
+
+    </ion-list>
+
+  </form>
+
+</ion-content>
