@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { User } from '../../models/user';
+import { UserRegister } from '../../models/userRegister';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -8,16 +8,18 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage {
+export class LoginPage implements OnInit {
 
   loginForm: FormGroup;
   message: string;
-  user = {} as User;
+  user = {} as UserRegister;
 
   constructor(
     private fb: FormBuilder,
     private authservice: AuthService,
-  ) {
+  ) { }
+
+  ngOnInit() {
     this.createForm();
   }
 

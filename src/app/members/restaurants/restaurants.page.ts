@@ -2,12 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MenuService } from '../../services/menu.service';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { Vendor } from '../../models/vendor';
 
-export interface Vendor {
-  name: string;
-  rid: string;
-  //description: string;
-}
 
 @Component({
   selector: 'app-restaurants',
@@ -21,11 +17,10 @@ export class RestaurantsPage implements OnInit {
   constructor(
     private menuservice: MenuService,
     private route: Router,
-  ) {
-    this.vendors = menuservice.getVendors();
-  }
+  ) { }
 
   ngOnInit() {
+    this.vendors = this.menuservice.getVendors();
   }
 
   getMenu(rid) {

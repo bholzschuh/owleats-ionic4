@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
-import { FirestoreService } from '../../services/firestore.service';
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { UserService } from '../../services/user.service';
 import { User } from '../../models/user';
-import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-profile',
@@ -12,27 +10,16 @@ import { Observable } from 'rxjs';
 })
 export class ProfilePage implements OnInit {
 
-  uid = "";
-  email = "";
-  first = "";
-  last = "";
-  userDoc: AngularFirestoreDocument<User>;
-  user: Observable<User>;
+  user = {} as User;
 
   constructor(
-    private authservice: AuthService,
-    private dbservice: FirestoreService,
-    private afs: AngularFirestore,
-  ) {
-    this.uid = authservice.getUID();
-    this.email = authservice.getEmail();
-    this.userDoc = this.afs.doc('users/' + this.uid);
-    this.userDoc.valueChanges().subscribe(res => {
-      this.first = res.first;
-      this.last = res.last;
-    })
-  }
+    private userservice: UserService,
+  ) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.userservice.getUserInfo().subscribe(res => {
+      this.user = res;
+    });
+  }
 
 }

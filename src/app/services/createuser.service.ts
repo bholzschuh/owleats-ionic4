@@ -1,19 +1,13 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
-
-export interface UserEntry {
-  first: string;
-  last: string;
-  email: string;
-  uid: string;
-}
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CreateuserService {
 
-  user = {} as UserEntry;
+  user = {} as User;
 
   constructor(
     private afS: AngularFirestore,

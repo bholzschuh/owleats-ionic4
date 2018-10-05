@@ -1,18 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { Item } from '../models/item';
+import { Vendor } from '../models/vendor';
 
-export interface Vendor {
-  name: string;
-  rid: string;
-  //description: string;
-}
-
-export interface Item {
-  name: string;
-  cost: string;
-  description: string;
-  url: string;
-}
 
 @Injectable({
   providedIn: 'root'
@@ -37,7 +27,7 @@ export class MenuService {
 
   // Get the items with the specific rid and return an observable sorted by name
   getItems(rid) {
-    this.itemsCollection = this.afS.collection(rid, ref => {
+    this.itemsCollection = this.afS.collection('restaurants/' + rid + '/menu', ref => {
       return ref.orderBy('name');
     });
     return this.itemsCollection.valueChanges();

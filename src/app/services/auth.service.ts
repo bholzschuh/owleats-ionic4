@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { CreateuserService } from './createuser.service';
 
-//import { User } from '../models/user';
 import { BehaviorSubject } from 'rxjs';
 import { Storage } from '@ionic/storage';
 import { Platform } from '@ionic/angular';

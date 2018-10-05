@@ -8,7 +8,9 @@
 </ion-header>
 
 <ion-content padding>
-  <h1>Welcome {{first}} {{last}} </h1>
-  <h2>{{email}}</h2>
-  <h3> {{uid}} </h3>
+  <div *ngIf="user">
+    <h1>Welcome {{user.first}} {{user.last}} </h1>
+    <h2>{{user.email}}</h2>
+    <h3> {{user.uid}} </h3>
+  </div>
 </ion-content>
