@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { MenuService } from '../../services/menu.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Item } from '../../models/item';
 
 
@@ -13,14 +13,22 @@ import { Item } from '../../models/item';
 export class MenuPage implements OnInit {
 
   items: Observable<Item[]>;
+  rid: string;
 
   constructor(
     private menuservice: MenuService,
-    private router: ActivatedRoute,
+    private routerAct: ActivatedRoute,
+    private route: Router,
   ) { }
 
   ngOnInit() {
-    this.items = this.menuservice.getItems(this.router.snapshot.paramMap.get('rid'));
+    this.rid = this.routerAct.snapshot.paramMap.get('rid')
+    this.items = this.menuservice.getItems(this.rid);
+  }
+
+  getItem(iid) {
+    console.log(iid);
+    this.route.navigate(['/members/itemview', this.rid, iid]);
   }
 
 }

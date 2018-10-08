@@ -9,12 +9,12 @@
 
 <ion-content padding>
   <ion-list *ngFor="let item of items | async">
-    <ion-item>
+    <ion-item (click)=getItem(item.iid)>
       <ion-thumbnail slot="start">
         <ion-img [src]="item.url"></ion-img>
       </ion-thumbnail>
-      <ion-label text="wrap">
-        {{item.name}} <br>${{item.cost}} <br>{{item.description}}
+      <ion-label>
+        {{item.name}}
       </ion-label>
     </ion-item>
   </ion-list>
