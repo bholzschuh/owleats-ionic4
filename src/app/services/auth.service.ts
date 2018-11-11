@@ -56,13 +56,12 @@ export class AuthService {
   }
 
   // Checks if authtoken exists and then checks if firebase session exists
-  checkToken() {
-    return this.storage.get(TOKEN_KEY).then(res => {
-      if (res) {
-        this.authenticationState.next(true);
-      }
-      this.checkFireAuth();
-    })
+  async checkToken() {
+    const res = await this.storage.get(TOKEN_KEY);
+    if (res) {
+      this.authenticationState.next(true);
+    }
+    this.checkFireAuth();
   }
 
   // Check if firebase session exists and manages authtoken accordingly
